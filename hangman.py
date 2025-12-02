@@ -2,12 +2,14 @@ from words import words
 import random
 
 def hangman():
-    secret_word = random.choice(words)
+    hint = random.choice(list(words.keys()))
+    secret_word = random.choice(words[hint])
     #print(secret_word)
     lives = 6
 
     #user guessed letters
     guessed_letters = set()
+    print('Hint, The category of the word is: ', hint)
 
     while lives > 0:
         
@@ -25,7 +27,7 @@ def hangman():
         
         #check win
         if '_' not in blanks:
-            print('You Win')
+            print(f'You Win, The word to guess was {secret_word}')
             return
         
         #user input
